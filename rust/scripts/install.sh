@@ -53,6 +53,7 @@ cat > /etc/systemd/system/rustserver.service << EOF
   
   [Install]
   WantedBy=multi-user.target
-EOF
+EOF &&
+echo 'Server installation complete' || echo 'Failed to install server'
 
 systemctl enable rustserver
