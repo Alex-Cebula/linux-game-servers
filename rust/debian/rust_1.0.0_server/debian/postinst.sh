@@ -4,4 +4,4 @@
 set -e
 
 # shellcheck disable=SC1091
-. ../user/bin/scripts/install.sh
+. ../usr/bin/scripts/install.sh
