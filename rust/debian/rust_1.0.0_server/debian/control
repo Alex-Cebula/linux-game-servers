@@ -1,6 +1,11 @@
 Source: rust-server
-Maintainer: Alex Cebula [alexcebula31@gmail.com]
+Maintainer: Alex Cebula <alexcebula31@gmail.com>
 Section: games
 Priority: optional
 Build-Depends: unzip
 Standards-Version: 1.0.0
+
+Package: rust-server
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Rust server

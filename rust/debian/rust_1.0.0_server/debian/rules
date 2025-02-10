@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+%:
+    dh $@ --with=python3
+
+override_dh_auto_install:
+    # Create the target directory for the scripts in the debian package
+    install -d $(CURDIR)/debian/rust-server/usr/local/bin
+
+    # Install each script into /usr/local/bin/
+    install -m 755 $(CURDIR)/install.sh $(CURDIR)/debian/rust-server/usr/local/bin/
+    install -m 755 $(CURDIR)/install_steamcmd.sh $(CURDIR)/debian/rust-server/usr/local/bin/
+    install -m 755 $(CURDIR)/install_rust.sh $(CURDIR)/debian/rust-server/usr/local/bin/
+    install -m 755 $(CURDIR)/config_helper.sh $(CURDIR)/debian/rust-server/usr/local/bin/
+    install -m 755 $(CURDIR)/config_prompt.sh $(CURDIR)/debian/rust-server/usr/local/bin/
+    install -m 755 $(CURDIR)/install_oxide.sh $(CURDIR)/debian/rust-server/usr/local/bin/
+    install -m 755 $(CURDIR)/config.ini.sh $(CURDIR)/debian/rust-server/usr/local/bin/
+

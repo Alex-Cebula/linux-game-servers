@@ -14,7 +14,7 @@ fi
 useradd -m rust
 
 # Install rust server through steamcmd
-su -C 'cd ~ +/usr/games/steamcmd +@sSteamCmdForcePlatformType linux +force_install_dir /home/rust/server +login anonymous +app_update +258550 +quit'
+/usr/games/steamcmd +@sSteamCmdForcePlatformType linux +force_install_dir /home/rust/server +login anonymous +app_update 258550 +quit
 
 # Verify the service doesn't already exist
 if [ -f "$LINUX_SERVICE_PATH" ]; then
@@ -42,7 +42,8 @@ cat > ${LINUX_SERVICE_PATH} << EOF
     Group=rust
     WorkingDirectory=/home/rust/server
     ExecStartPre=/usr/games/steamcmd +@sSteamCmdForcePlatformType linux +force_install_dir /home/rust/server +login anonymous +app_update 258550 +quit
-    ExecStart=/home/rust/server/RustDedicated -batchmode \
+    ExecStart= . ./config_helper
+        /home/rust/server/RustDedicated -batchmode \
         +server.port $(port) \
         +server.level "Procedural Map" \
         +server.seed $(seed) \
